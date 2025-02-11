@@ -1,8 +1,5 @@
 package tests;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-import io.restassured.RestAssured;
-import io.restassured.specification.ResponseSpecification;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -11,14 +8,11 @@ import org.openqa.selenium.io.FileHandler;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
-import org.testng.asserts.SoftAssert;
-import org.testng.collections.Sets;
 import pages.BasePage;
 import pages.HomePage;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
 
 import static org.testng.Assert.assertEquals;
 
@@ -27,11 +21,11 @@ public class BaseTest {
     protected BasePage basePage;
     protected HomePage homePage;
     private final String SITE_URL = "https://github.com/";
-    private final String someVariable = "text";
-    public final String HOME_PAGE_TITLE = "Build and ship software on a single, collaborative platform";
+    public final String HOME_PAGE_TITLE = "GitHub · Build and ship software on a single, collaborative platform · GitHub";
     @BeforeTest
     public void startSeleniumSession(){
         System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
+
         driver = new ChromeDriver();
         driver.manage().window().fullscreen();
     }
@@ -54,6 +48,7 @@ public class BaseTest {
 
     public void openHomePage(){
         driver.get(SITE_URL);
+
         basePage = new BasePage();
         basePage.setDriver(driver);
         homePage = new HomePage();

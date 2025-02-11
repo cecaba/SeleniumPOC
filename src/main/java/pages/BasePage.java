@@ -23,7 +23,7 @@ public class BasePage {
         return find(locator).getAttribute("textContent");
     }
 
-    public void waitForElementPresence(By locator) {
+    protected void waitForElementPresence(By locator) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
