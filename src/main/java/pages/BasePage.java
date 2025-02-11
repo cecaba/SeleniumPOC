@@ -20,7 +20,7 @@ public class BasePage {
     }
 
     protected String getTitleText(By locator){
-        return find(locator).getAttribute("textContent");
+        return find(locator).getDomProperty("text");
     }
 
     protected void waitForElementPresence(By locator) {
